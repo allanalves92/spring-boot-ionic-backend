@@ -15,6 +15,7 @@ import com.allanalves.cursomc.domain.Cidade;
 import com.allanalves.cursomc.domain.Cliente;
 import com.allanalves.cursomc.domain.Endereco;
 import com.allanalves.cursomc.domain.enums.TipoCliente;
+import com.allanalves.cursomc.dto.ClienteDTO;
 import com.allanalves.cursomc.dto.ClienteNewDTO;
 import com.allanalves.cursomc.exceptions.DataIntegrityException;
 import com.allanalves.cursomc.exceptions.ObjectNotFoundException;
@@ -65,6 +66,10 @@ public class ClienteService {
 	public Page<Cliente> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repository.findAll(pageRequest);
+	}
+
+	public Cliente fromDTO(ClienteDTO clienteDTO) {
+		return new Cliente(clienteDTO.getId(), clienteDTO.getNome(), clienteDTO.getEmail(), null, null);
 	}
 
 	public Cliente fromDTO(ClienteNewDTO clienteDTO) {
