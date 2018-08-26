@@ -14,7 +14,6 @@ import com.allanalves.cursomc.domain.Cliente;
 import com.allanalves.cursomc.domain.Endereco;
 import com.allanalves.cursomc.domain.Estado;
 import com.allanalves.cursomc.domain.ItemPedido;
-import com.allanalves.cursomc.domain.ItemPedidoPK;
 import com.allanalves.cursomc.domain.Pagamento;
 import com.allanalves.cursomc.domain.PagamentoComBoleto;
 import com.allanalves.cursomc.domain.PagamentoComCartao;
