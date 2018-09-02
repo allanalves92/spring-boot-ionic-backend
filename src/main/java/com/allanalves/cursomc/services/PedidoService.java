@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.allanalves.cursomc.domain.ItemPedido;
 import com.allanalves.cursomc.domain.PagamentoComBoleto;
 import com.allanalves.cursomc.domain.Pedido;
+import com.allanalves.cursomc.domain.Produto;
 import com.allanalves.cursomc.domain.enums.EstadoPagamento;
 import com.allanalves.cursomc.exceptions.ObjectNotFoundException;
 import com.allanalves.cursomc.repositories.ItemPedidoRepository;
@@ -33,6 +34,9 @@ public class PedidoService {
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
 
+	@Autowired
+	private ClienteService clienteService;
+
 	public Pedido find(Integer id) {
 		Optional<Pedido> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
@@ -42,6 +46,7 @@ public class PedidoService {
 	public Pedido insert(Pedido pedido) {
 		pedido.setId(null);
 		pedido.setInstante(new Date());
+		pedido.setCliente(clienteService.find(pedido.getCliente().getId()));
 		pedido.getPagamento().setEstado(EstadoPagamento.PENDENTE);
 		pedido.getPagamento().setPedido(pedido);
 
@@ -55,11 +60,15 @@ public class PedidoService {
 
 		for (ItemPedido item : pedido.getItens()) {
 			item.setDesconto(0.0);
-			item.setPreco(produtoService.find(item.getProduto().getId()).getPreco());
+			Produto produto = produtoService.find(item.getProduto().getId());
+			item.setProduto(produto);
+			item.setPreco(produto.getPreco());
 			item.setPedido(pedido);
 		}
 
 		itemPedidoRepository.saveAll(pedido.getItens());
+
+		System.out.println(pedido);
 
 		return pedido;
 	}
