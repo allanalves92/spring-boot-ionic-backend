@@ -11,10 +11,10 @@ import com.allanalves.cursomc.domain.PagamentoComBoleto;
 import com.allanalves.cursomc.domain.Pedido;
 import com.allanalves.cursomc.domain.Produto;
 import com.allanalves.cursomc.domain.enums.EstadoPagamento;
-import com.allanalves.cursomc.exceptions.ObjectNotFoundException;
 import com.allanalves.cursomc.repositories.ItemPedidoRepository;
 import com.allanalves.cursomc.repositories.PagamentoRepository;
 import com.allanalves.cursomc.repositories.PedidoRepository;
+import com.allanalves.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class PedidoService {

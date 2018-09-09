@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.allanalves.cursomc.domain.Categoria;
 import com.allanalves.cursomc.domain.Produto;
-import com.allanalves.cursomc.exceptions.ObjectNotFoundException;
 import com.allanalves.cursomc.repositories.CategoriaRepository;
 import com.allanalves.cursomc.repositories.ProdutoRepository;
+import com.allanalves.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ProdutoService {

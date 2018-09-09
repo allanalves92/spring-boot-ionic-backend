@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.allanalves.cursomc.domain.Categoria;
 import com.allanalves.cursomc.dto.CategoriaDTO;
-import com.allanalves.cursomc.exceptions.DataIntegrityException;
-import com.allanalves.cursomc.exceptions.ObjectNotFoundException;
 import com.allanalves.cursomc.repositories.CategoriaRepository;
+import com.allanalves.cursomc.services.exceptions.DataIntegrityException;
+import com.allanalves.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {

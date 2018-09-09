@@ -1,4 +1,4 @@
-package com.allanalves.cursomc.exceptions;
+package com.allanalves.cursomc.services.exceptions;
 
 public class DataIntegrityException extends RuntimeException {
 
